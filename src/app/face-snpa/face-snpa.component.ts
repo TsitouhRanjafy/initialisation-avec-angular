@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, input, OnInit } from '@angular/core';
+import { Facesnap } from '../models/face-snap';
 
 @Component({
   selector: 'app-face-snap',
@@ -7,18 +8,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './face-snpa.component.html',
   styleUrl: './face-snpa.component.scss'
 })
-export class FaceSnpaComponent implements OnInit {
-  title !: string;
-  description !: string;
-  creatAt !: Date;
-  snap !: number;
-  image !: string;
+export class FaceSnpaComponent implements OnInit{
+  @Input() facesnap !: Facesnap;
+  snapButtonText !: string;
 
   ngOnInit(): void {
-    this.title = 'Archival',
-    this.description = 'Mon meilleur amis depuis toujours',
-    this.creatAt = new Date(),
-    this.snap = 0,
-    this.image = '../../../public/image/batiment.png'
+    this.snapButtonText = 'Oh snap!'
+  }
+
+
+  addSnap() : void {
+    if (this.snapButtonText == 'Oh snap!'){
+      this.snapButtonText = 'Oops , un snap';
+      this.facesnap.addSnap();
+    } else {
+      this.snapButtonText = 'Oh snap!';
+      this.facesnap.removeSnap();
+    }
   }
 }
