@@ -1,0 +1,17 @@
+<div class="face-snap-card" [ngClass]="{ snapped : userHasSnapped }">
+    <!--  '1.0-0' = 'chiffresMinAvantVirgule.chiffresMinAprèsVirgule-chiffresMaxAprèsVirgule' -->
+    <a routerLink="/facesnaps">BACK</a>
+    <h1>{{ 122442.467 | number  }}</h1>
+    <h1>{{ myPercentNumber | percent : '1.2-2' }}</h1>
+    <p>{{ mySalary | currency:'EUR' : 'code' }}</p>
+    <h1>{{ facesnap.title | titlecase}} </h1>
+    <img [src]="facesnap.imageuUrl" alt="" srcset="">
+    <p>{{ facesnap.description }}</p>
+    <p>Mise en ligne le {{ facesnap.creatAt | date: "d MMMM yyyy"  }}</p>
+    <p> 
+        <button (click)="onSnap();" id="btnSnap" >{{ snapButtonText }}</button>
+        <span [ngStyle]="{ color : 'rgb(0, '+ facesnap.snap +', 0)' }" >
+            👍{{ facesnap.snap }}
+        </span>
+    </p>
+</div>

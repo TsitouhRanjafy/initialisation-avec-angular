@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Facesnap } from '../models/face-snap';
 import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe, NgClass, NgStyle, PercentPipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { FaceSnapsService } from '../service/face-snaps.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ActivationEnd, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-face-snap',
+  selector: 'app-single-face-snap',
   standalone: true, 
   imports: [
     NgStyle,
@@ -16,13 +16,14 @@ import { Router } from '@angular/router';
     DatePipe,
     DecimalPipe,
     PercentPipe,
-    CurrencyPipe
+    CurrencyPipe,
+    RouterLink
   ],
-  templateUrl: './face-snpa.component.html',
-  styleUrl: './face-snpa.component.scss'
+  templateUrl: './single-face-snpa.component.html',
+  styleUrl: './single-face-snpa.component.scss'
 })
-export class FaceSnpaComponent implements OnInit{
-  @Input() facesnap !: Facesnap;
+export class SingleFaceSnpaComponent implements OnInit{
+  facesnap !: Facesnap;
 
   snapButtonText !: string;
   userHasSnapped !: boolean;
@@ -31,18 +32,19 @@ export class FaceSnpaComponent implements OnInit{
   mySalary : number = 346
   
   private faceSnapService : FaceSnapsService;
-  private route : Router
+  private route : ActivatedRoute;
 
-  constructor(faceSnapService : FaceSnapsService,route : Router){
+  constructor(faceSnapService : FaceSnapsService,route: ActivatedRoute){
     this.faceSnapService = faceSnapService
     this.route = route
   }
 
   ngOnInit(): void {
-    this.snapButtonText = 'Oh snap!'
-    this.userHasSnapped = false
+    this.prepareInterface();
+    this.getFaceSnap();
   }
 
+  
   onSnap() : void {
     if (this.snapButtonText == 'Oh snap!'){
       this.snapButtonText = 'Oops , un snap';
@@ -55,7 +57,13 @@ export class FaceSnpaComponent implements OnInit{
     }
   }
 
-  onViewFaceSnap(){
-    this.route.navigateByUrl(`facesnaps/${this.facesnap.id}`)
+  private getFaceSnap(){
+    const faceSnapId = this.route.snapshot.params['id'];
+    this.facesnap = this.faceSnapService.findFaceSnapById(faceSnapId)
+  }
+
+  private prepareInterface(){
+    this.snapButtonText = 'Oh snap!'
+    this.userHasSnapped = false
   }
 }
