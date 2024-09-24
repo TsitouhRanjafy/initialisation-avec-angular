@@ -12,19 +12,19 @@ export class ContactService{
             "+261 38 20 002 43"
         ),
         new Contact(
-            "Tsitohaina",
+            "Tsanta",
             "+261 38 20 002 43"
         ),
         new Contact(
-            "Tsitohaina",
+            "RAMIARANJAFY",
             "+261 38 20 002 43"
         ),
         new Contact(
-            "Tsitohaina",
+            "Felana",
             "+261 38 20 002 43"
         ),
         new Contact(
-            "Tsitohaina",
+            "Simon",
             "+261 38 20 002 43"
         )
     ]

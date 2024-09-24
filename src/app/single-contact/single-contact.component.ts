@@ -21,17 +21,12 @@ export class SingleContactComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // this.getContact();
+    this.getContact();
   }
 
-
-
-
-
-
-  // private getContact() : void {
-  //   const contactId : string = this.route.snapshot.params['id']
-  //   this.contact = this.contactService.findContactById(contactId)
-  // }
+  private getContact() : void {
+    const contactId : string = this.route.snapshot.params['id']
+    this.contact = this.contactService.findContactById(contactId)
+  }
 
 }
