@@ -1,0 +1,18 @@
+/* Enlève les spinners dans Chrome, Safari, Edge, et Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Enlève les spinners dans Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.container-input{
+    input:focus{
+        outline: none;
+        border: none;
+    }
+}

@@ -4,6 +4,10 @@ import { SingleContactComponent } from './single-contact/single-contact.componen
 
 
 export const routes: Routes = [
-    { path : '',component : ContactListComponent },
-    { path : 'contact/:id', component : SingleContactComponent}
+    { path : '',component : ContactListComponent},
+    { 
+        path : ':id', 
+        component : SingleContactComponent,
+        canActivate : [() =>{ return true }]
+    }
 ];

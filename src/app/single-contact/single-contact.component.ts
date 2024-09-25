@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, SimpleChange } from '@angular/core';
 import { Contact } from '../models/contact.model';
 import { ContactService } from '../service/contact.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-single-contact',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './single-contact.component.html',
   styleUrl: './single-contact.component.scss'
 })

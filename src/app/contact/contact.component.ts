@@ -20,6 +20,6 @@ export class ContactComponent {
   }
 
   onViewContact() : void {
-    this.route.navigateByUrl(`contact/${this.contact.id}`)
+    this.route.navigateByUrl(`/${this.contact.id}`)
   }
 }

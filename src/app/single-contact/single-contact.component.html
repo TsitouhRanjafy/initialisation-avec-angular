@@ -1,6 +1,12 @@
-<div class="contact-card">
-    <div class="photoProfil"></div>
-    <h1 id="id">{{ contact.id }}</h1>
-    <h1 id="nom">{{ contact.name }}</h1>
-    <h1 id="tel">{{ contact.numero }}</h1>
+<div class="container mx-auto w-2/5 bg-slate-400 p-4">
+    <div class="container container-icon" routerLink="">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 text-slate-200">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>      
+    </div>
+    <div class="photoProfil h-2/5">
+        <img class="py-4" [src]="contact.imageUrl" alt="">
+    </div>
+    <h1 id="nom" class="text-slate-200 capitalize text-2xl">{{ contact.name }}</h1>
+    <h1 id="tel" class="text-slate-200">{{ contact.numero }}</h1>
 </div>

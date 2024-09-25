@@ -1,3 +1,12 @@
-@for (contact of contacts; track contact.id) {
-    <app-contact  [contact]="contact"/>
-}
+<div class="container-input flex-col mx-auto w-2/5 p-2 bg-slate-400 rounded m-4" >
+    <label for="name">Name</label>
+    <input class="w-full rounded border-none px-2" placeholder="name" type="text" inputmode="latin" id="name">
+    <label for="number">Number</label>
+    <input class="w-full rounded px-2" placeholder="number" type="number" inputmode="tel" id="number">
+    <button class="bg-slate-500 p-2 rounded my-2 " type="submit">Add</button>
+</div>
+<div class="list max-h-80 overflow-y-scroll w-fit mx-auto">
+    @for (contact of contacts; track contact.id) {
+        <app-contact  [contact]="contact"/>
+    }
+</div>

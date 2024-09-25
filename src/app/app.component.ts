@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SingleContactComponent } from "./single-contact/single-contact.component";
-import { ContactListComponent } from './contact-list/contact-list.component';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +10,19 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  private activatedRoute : ActivatedRoute
+  private route : Router
 
+  constructor(activedRoute : ActivatedRoute,route : Router){
+    this.activatedRoute = activedRoute
+    this.route = route
+  }
+
+  ngOnInit(): void {
+    const contactId : string = this.activatedRoute.snapshot.params['id']
+    if (!contactId){
+      this.route.navigateByUrl("");
+    }
+  }
 }

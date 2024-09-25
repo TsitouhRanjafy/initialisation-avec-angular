@@ -1,4 +1,9 @@
-#id{
-    border: solid 1px red;
-    font-size: 24px;
+.container-icon{
+    svg{
+        padding: 2px;
+        border-radius: 50%;
+        &:active{
+            background-color: rgb(100 116 139);
+        }
+    }
 }
