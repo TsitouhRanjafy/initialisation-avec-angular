@@ -20,8 +20,13 @@ export class ContactListComponent implements OnInit{
     this.contactService = contactService;
   }
 
-  ngOnInit(): void {
-    this.contacts = this.contactService.getContact();
+  async ngOnInit() {
+    this.contacts = await this.contactService.getsContact();
+  }
+
+  async onAdd() : Promise<void> {
+    this.contactService.addContact("Lahatra","+261 33 23 032 53")
+    this.contacts = await this.contactService.getsContact();
   }
 
 }

@@ -26,9 +26,9 @@ export class SingleContactComponent implements OnInit{
     this.getContact();
   }
 
-  private getContact() : void {
+  private async getContact() : Promise<void> {
     const contactId : string = this.route.snapshot.params['id']
-    this.contact = this.contactService.findContactById(contactId)
+    this.contact = await this.contactService.findContactById(contactId)
   }
 
 }

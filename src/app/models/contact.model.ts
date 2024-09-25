@@ -1,15 +1,15 @@
-export class Contact {
+import { stringify } from "uuid";
+
+export class Contact{
     id : string;
     name : string;
-    numero : string;
+    numberPhone: string;
     imageUrl : URL;
 
-    constructor(name : string, numero : string,imageUrl : URL){
+    constructor(id : string,name : string, numero : string,imageUrl : string){
+        this.id = id;
         this.name = name;
-        this.numero = numero;
-        this.id = crypto.randomUUID().substring(0,8);
-        this.imageUrl = imageUrl
+        this.numberPhone = numero;
+        this.imageUrl = new URL(imageUrl)
     }
-
-    
 }

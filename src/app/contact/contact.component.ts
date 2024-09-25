@@ -14,12 +14,22 @@ export class ContactComponent {
   @Input() contact !: Contact
 
   private route : Router
+  private contactService : ContactService
 
-  constructor(route : Router){
+  constructor(route : Router,contactService : ContactService){
     this.route = route;
+    this.contactService = contactService
   }
 
   onViewContact() : void {
     this.route.navigateByUrl(`/${this.contact.id}`)
+  }
+  onDelete() : void {
+    try {
+      this.contactService.deleteContact(this.contact.id);
+      location.reload()
+    } catch (error) {
+      throw error
+    }
   }
 }
